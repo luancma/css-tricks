@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="list" data-totalOfElements>
+    <div class="item"><img src="https://placehold.co/600x400" alt=""></div>
+    <div class="item"><img src="https://placehold.co/600x400" alt=""></div>
+    <div class="item"><img src="https://placehold.co/600x400" alt=""></div>
+    <div class="item"><img src="https://placehold.co/600x400" alt=""></div>
+
+    <div class="item"><img src="https://placehold.co/600x400" alt=""></div>
+
+    <div class="item"><img src="https://placehold.co/600x400" alt=""></div>
+    <div class="item"><img src="https://placehold.co/600x400" alt=""></div>
+    <div class="item"><img src="https://placehold.co/600x400" alt=""></div>
+    <div class="item"><img src="https://placehold.co/600x400" alt=""></div>
+  </div>
+
+  <script>
+    let totalOfElements = document.querySelectorAll('.item')
+    totalOfElements.forEach((element, index) => {
+      element.addEventListener('mouseover', () => {
+        let maxBrightness = 1
+        let minBrightness = 0.2
+        const restOfRightElements = totalOfElements.length - index - 1
+        element.style.filter = `brightness(${maxBrightness})`
+
+        for (let i = 1; i <= restOfRightElements; i++) {
+          totalOfElements[index + i].style.filter = `brightness(${maxBrightness - (0.1 * i)})`
+        }
+      })
+
+      element.addEventListener('mouseout', () => {
+        const restOfRightElements = totalOfElements.length - index - 1
+        element.style.filter = `brightness(0)`
+        for (let i = 1; i <= restOfRightElements; i++) {
+          totalOfElements[index + i].style.filter = `brightness(0)`
+        }
+      })
+    })
+
+  </script>
+</body>
+
+</html>
