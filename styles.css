@@ -8,7 +8,7 @@
     border-radius: 5px;
     overflow: hidden;
     height: 300px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     filter: brightness(0);
     transition: all .5s;
     cursor: pointer;
@@ -23,26 +23,39 @@
 
     &:hover {
       filter: brightness(1);
-      transform: translateZ(200px);
+      transform: translateZ(240px);
+      scale: 1.1;
     }
 
     &:hover+* {
       filter: brightness(0.6);
-      transform: translateZ(100px) rotateY(40deg);
+      transform: translateZ(160px) rotateY(40deg);
+      box-shadow: 4px 4px 0px 0px black;
     }
 
     &:hover+*+* {
-      filter: brightness(0.3);
-      transform: translateZ(70px) rotateY(20deg);
+      filter: brightness(0.4);
+      transform: translateZ(100px) rotateY(30deg);
+    }
+
+    &:hover+*+*+* {
+      filter: brightness(0.2);
+      transform: translateZ(100px) rotateY(20deg);
     }
 
     &:has(+ *:hover) {
       filter: brightness(0.6);
-      transform: translateZ(100px) rotateY(-40deg);
+      transform: translateZ(160px) rotateY(-40deg);
+      box-shadow: 4px 4px 0px 0px black;
     }
 
     &:has(+ * + *:hover) {
       filter: brightness(0.4);
+      transform: translateZ(100px) rotateY(-30deg);
+    }
+
+    &:has(+ * + * + *:hover) {
+      filter: brightness(0.2);
       transform: translateZ(100px) rotateY(-20deg);
     }
   }
